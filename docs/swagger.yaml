@@ -1,0 +1,147 @@
+basePath: /
+definitions:
+  models.Cliente:
+    properties:
+      address:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  models.Customer:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: suporte@opus127.com.br
+    name: Opus127
+    url: http://www.opus127.com.br
+  description: Essa é uma API de testes criada para testes usando a lingagem go
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  title: RestFUL API usando Go, Gin, Swagger e GORM + SQLServer
+  version: "1.0"
+paths:
+  /clientes:
+    get:
+      operationId: get-all-clientes
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Cliente'
+      summary: Busca todos os clientes
+  /clientes/{id}:
+    get:
+      operationId: find-customer
+      parameters:
+      - description: Cliente ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Cliente'
+      summary: Encontra um cliente
+  /customers:
+    get:
+      operationId: get-all-customers
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+      summary: Get all the customers
+    post:
+      operationId: create-customer
+      parameters:
+      - description: customer data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.Customer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+      summary: Create a new customer
+  /customers/{id}:
+    delete:
+      operationId: delete-customer
+      parameters:
+      - description: Customer ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+      summary: Delete a customer
+    get:
+      operationId: find-customer
+      parameters:
+      - description: Customer ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+      summary: Find a customer
+    patch:
+      operationId: update-customer
+      parameters:
+      - description: Customer ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: customer data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.Customer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Customer'
+      summary: Update a customer
+swagger: "2.0"
